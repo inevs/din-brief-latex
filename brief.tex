@@ -1,0 +1,152 @@
+% Briefvorlage für Privatleute
+% Ersteller: Alexey Abel
+% Git-Repository: https://github.com/PanCakeConnaisseur/latex-briefvorlage-din-5008
+% Basiert auf KOMA-Scripts scrlttr2
+
+\documentclass[
+	% Schriftgröße
+	fontsize=12pt,
+	%
+	% zwischen Absätzen eine leere Zeile einfügen, statt lediglich Einrückung
+	parskip=full,
+	%
+	% Papierformat auf DIN-A4
+	paper=A4,
+	%
+	% Briefkopf (ganz oben) rechts ausrichten, standardmäßig links
+	fromalign=right,
+	%
+	% Telefonnummer im Briefkopf anzeigen
+	fromphone=false,
+	%
+	% Faxnnummer im Briefkopf anzeigen
+	%fromfax=true,
+	%
+	% E-Mail-Adresse im Briefkopf anzeigen
+	%fromemail=true,
+	%
+	% URL im Briefkopf anzeigen
+	%fromurl=true,
+	%
+	% Faltmarkierungen
+	foldmarks=true,
+	%
+	% Die neuste Version von scrlettr2 verwenden
+	version=last,
+]{scrlttr2}
+
+% Zeichenkodierung des Dokuments ist in UTF-8
+\usepackage[utf8]{inputenc}
+
+% Eurosymbol-Unterstützung
+\usepackage{eurosym}
+% Das Unicode-Zeichen € als \euro interpretieren.
+% So kann man direkt € tippen anstatt jedes Mal \euro auszuschreiben.
+\DeclareUnicodeCharacter{20AC}{\euro}
+
+% Sprache des Dokuments auf Deutsch
+\usepackage[ngerman]{babel}
+
+% Includen von PDFs nach dem Brief, siehe \includepdf unten
+\usepackage{pdfpages}
+
+% klickbare Links und E-Mail-Adressen. Paket url kann keine klickbaren,
+% deswegen hyperref. Option hidelinks versteckt farbigen Rahmen.
+\usepackage[hidelinks]{hyperref}
+
+% Absendername unter Schlussformel entfernen. Dieser wird bereits aus dem Briefkopf ersichtlich.
+% Hier wird die signature-Variable einfach auf einen leeren Wert gesetzt und wäre sonst \usekomavar{fromname}.
+\setkomavar{signature}{}
+
+% Für Schlussformel (und nicht vorhandenen Namen darunter) Linksbündigkeit erzwingen
+%\renewcommand*{\raggedsignature}{\raggedright}
+
+%\usepackage[
+%top    = 2.75cm,
+%bottom = 1.00cm,
+%left   = 1.50cm,
+%right  = 1.50cm]{geometry}
+
+\begin{document}
+
+% Absendername
+\setkomavar{fromname}{My Name}
+
+% Absenderadresse
+\setkomavar{fromaddress}{MyStreet 1\\12345 MyTown}
+
+% Absendertelefonnummer
+% \setkomavar{fromphone}{myphone}
+
+% Absenderfax
+% (oben fromfax=true setzen)
+%\setkomavar{fromfax}{myfax}
+
+% Absender-E-Mail-Adresse
+% der erste Parameter ist fürs Klicken, der zweite wird angezeigt/gedruckt
+\setkomavar{fromemail}{\href{mailto:me@mymail.com}{me@mymail.com}}
+
+% Absender-URL
+% (oben fromurl=true setzen)
+% eckige Klammern entfernen damit "URL:" erscheint oder dort Alternativtext eintragen
+% der erste Parameter ist fürs Klicken, der zweite wird angezeigt/gedruckt
+% \setkomavar{fromurl}[]{\href{http://absender.de}{absender.de}}
+
+% Datum
+\setkomavar{date}{\today}
+
+% Betreff
+\setkomavar{subject}{This is an important subject}
+
+% Kundennummer
+%\setkomavar{customer}[\customername]{custno}
+
+% Ihr Zeichen
+% \setkomavar{yourref}[\yourrefname]{}
+
+% Ihr Schreiben vom
+% \setkomavar{yourmail}[\yourmailname]{1. April 2022}
+
+\begin{letter}{
+	Mr. Recipent\\
+	Address street 1\\
+	12345 TheTown
+}
+
+\opening{Drea recipients}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique sapien id ligula tempus eleifend. Praesent turpis arcu, volutpat id mattis quis, accumsan eu nibh. Nunc eu orci ut magna sodales sagittis. Sed sit amet purus sapien. Etiam condimentum eu magna a vulputate. Fusce vitae nunc non odio hendrerit mollis. Nulla scelerisque, massa vitae rhoncus ornare, tortor augue congue ligula, sed convallis quam sapien in felis. Etiam luctus est lacus, quis euismod turpis pellentesque eget. Sed interdum arcu vitae mauris convallis sollicitudin.
+
+Nullam rutrum libero ac elit auctor aliquet ac blandit nisl. Etiam dapibus, urna eu elementum accumsan, erat massa vestibulum sem, vitae mollis nisl nibh eu arcu. Duis laoreet metus sit amet venenatis vehicula. Proin in quam dapibus, semper lacus ut, sagittis turpis. Duis ac metus vel odio feugiat fringilla in nec justo. Sed ut tortor ut sem interdum placerat sit amet in magna. Sed laoreet dignissim ex, id sollicitudin erat efficitur ac. Aliquam laoreet velit ex, vel commodo purus egestas eget. Mauris sapien ex, iaculis quis finibus at, semper lacinia velit. Suspendisse sodales felis at volutpat pretium. Praesent sed congue tortor.
+
+
+\closing{Best Regards}
+Me
+
+% Post Scriptum
+%\ps PS: blah blah.
+
+% Anlage(n)
+% Standardmäßig wird "Anlage(n)" eingefügt, dies kann überschrieben werden, hier mit "Anlagen"
+% \setkomavar*{enclseparator}{Anlagen}
+% \encl{AU-Bescheinigungen}
+
+% Verteiler
+%\cc{Bürgermeister, Vereinsvorsitzender}
+
+\end{letter}
+
+% Weitere PDFs können automatisch angefügt werden, z.B. Ahnänge.
+%\includepdf[pages=-,openright]{pfad/zu/weiteren/pdfs/dokument.pdf}
+% Pfad ist relativ zu dieser tex-Datei. Mit .. ein Verzeichnis hoch.
+% Der pages-Parameter spezifiziert welche Seiten eingefügt werden.
+% Beispiele:
+% pages=-				alle Seiten
+% pages={1-4}			Seite 1-4
+% pages={1,4,5}			Seite 1, 4 und 5
+% pages={3,{},8-11,15}	Seite 3, leere Seite, Seite 8-11 und Seite 15
+% Der openright-Parameter startet die Anlagen auf ungerader (rechter) Seite, d.h. notfalls wird eine leere Seite
+% eingefügt. Im doppelseitigem Druck wird dadurch besser zwischen Brief und Anlage getrennt. Für einseitigen Druck
+% entfernen.
+
+\end{document}
