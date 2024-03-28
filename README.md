@@ -9,4 +9,4 @@ Vorraussetzungen:
  * extension Dev-Containers
  * Docker Desktop
 
-Öffnen dieses Repository in VSCode, öffnen diesen Ordner erneut in DevContainer und schreib deinen Brief. Klicke auf "Ausführen" und sieh das Ergebnis als pdf-Datei im Ordner "out".
+Öffne dieses Repository in VSCode, öffne diesen Ordner erneut in DevContainer und schreib deinen Brief. Klicke auf "Ausführen" und sieh das Ergebnis als pdf-Datei im Ordner "out".
